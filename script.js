@@ -1,15 +1,13 @@
 const classifier = knnClassifier.create();
 let net;
+let webcamElement;
 
 async function loadImageAsTensor(url) {
   const img = new Image();
   img.crossOrigin = "anonymous";
   img.src = url;
 
-  await new Promise((resolve) => {
-    img.onload = resolve;
-  });
-
+  await new Promise((resolve) => (img.onload = resolve));
   return tf.browser.fromPixels(img);
 }
 
@@ -20,35 +18,47 @@ async function addExampleFromFile(imagePath, classId) {
   imgTensor.dispose();
 }
 
+async function trainFromFolder(folderName, count, classId) {
+  for (let i = 1; i <= count; i++) {
+    const imagePath = `${folderName}/${i}.jpg`;
+    console.log(`Adding ${imagePath}...`);
+    await addExampleFromFile(imagePath, classId);
+  }
+}
+
 async function app() {
-  console.log("Loading MobileNet...");
+  document.getElementById("console").innerText = "Loading MobileNet...";
   net = await mobilenet.load();
-  console.log("Model loaded ✅");
+  document.getElementById("console").innerText = "Model loaded ✅\nTraining...";
 
-  // 🐱 Train with Cat 1 images
-  await addExampleFromFile("images/cat1_1.jpg", 0);
-  await addExampleFromFile("images/cat1_2.jpg", 0);
-  await addExampleFromFile("images/cat1_3.jpg", 0);
+  // 🐱 Train Herrle images (class 0)
+  await trainFromFolder("herrle", 50, 0);
 
-  // 🐈 Train with Cat 2 images
-  await addExampleFromFile("images/cat2_1.jpg", 1);
-  await addExampleFromFile("images/cat2_2.jpg", 1);
-  await addExampleFromFile("images/cat2_3.jpg", 1);
+  // 🐈 Train Peaches images (class 1)
+  await trainFromFolder("peaches", 41, 1);
 
-  console.log("Training examples added 🧠");
+  document.getElementById("console").innerText += "\nTraining complete 🧠";
 
-  // 🧪 Test on a new image
-  const testTensor = await loadImageAsTensor("images/test.jpg");
-  const activation = net.infer(testTensor, "conv_preds");
-  const result = await classifier.predictClass(activation);
-  const classes = ["Cat 1 (Herrle)", "Cat 2 (Peaches)"];
+  // 🎥 Start webcam
+  webcamElement = document.getElementById("webcam");
+  const webcam = await tf.data.webcam(webcamElement);
 
-  document.getElementById("console").innerText = `
-    Prediction: ${classes[result.label]}
-    Probability: ${result.confidences[result.label].toFixed(2)}
-  `;
+  const classes = ["Herrle", "Peaches"];
 
-  testTensor.dispose();
+  // 🔁 Continuous prediction loop
+  while (true) {
+    const img = await webcam.capture();
+    const activation = net.infer(img, "conv_preds");
+    const result = await classifier.predictClass(activation);
+
+    document.getElementById("console").innerText = `
+      Prediction: ${classes[result.label]}
+      Probability: ${result.confidences[result.label].toFixed(2)}
+    `;
+
+    img.dispose();
+    await tf.nextFrame();
+  }
 }
 
 app();
