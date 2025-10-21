@@ -11,3 +11,9 @@
 I found some code online and modified it to fit what I was doing. I have a lot of files of my cat uploaded to a vscode project then it takes the webcam and observers which cat is which I'm going to connect this to an esp32 which will run servo motors to decide which cat to let to each dish.![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MzkxMiwicHVyIjoiYmxvYl9pZCJ9fQ==--8e58e4c1cd2aba202e15a8ae7f1a87ec5bab3453/image.png)
   
 
+## 10/21/2025 - make cat identifi  
+
+I finished the cat identifier I used ai for it and I am planning on making an actual version without ai I just needed to know that it wwas possible to do so now that i have this I'll start making the circuit diagram probably it will be something like 3 servos and an esp32 
+![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDIxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--fae3e97308e65f4786d0f19fb0e3e5afacd33973/image.png)
+  
+
