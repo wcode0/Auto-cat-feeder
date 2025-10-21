@@ -41,7 +41,7 @@ async function app() {
   const testTensor = await loadImageAsTensor("images/test.jpg");
   const activation = net.infer(testTensor, "conv_preds");
   const result = await classifier.predictClass(activation);
-  const classes = ["Cat 1 (Mittens)", "Cat 2 (Luna)"];
+  const classes = ["Cat 1 (Herrle)", "Cat 2 (Peaches)"];
 
   document.getElementById("console").innerText = `
     Prediction: ${classes[result.label]}
