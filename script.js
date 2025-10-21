@@ -39,9 +39,11 @@ async function app() {
 
   document.getElementById("console").innerText += "\nTraining complete 🧠";
 
-  // 🎥 Start webcam
+  // 🎥 Start webcam (rear camera)
   webcamElement = document.getElementById("webcam");
-  const webcam = await tf.data.webcam(webcamElement);
+  const webcam = await tf.data.webcam(webcamElement, {
+    facingMode: "environment"  // ✅ this tells it to use the rear camera
+  });
 
   const classes = ["Herrle", "Peaches"];
 
