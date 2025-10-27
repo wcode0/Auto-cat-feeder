@@ -17,3 +17,9 @@ I finished the cat identifier I used ai for it and I am planning on making an ac
 ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NDIxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--fae3e97308e65f4786d0f19fb0e3e5afacd33973/image.png)
   
 
+## 10/27/2025 - I made the schematic  
+
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjA1OCwicHVyIjoiYmxvYl9pZCJ9fQ==--84652f7ba149f357a1ffbd11151a043962412ebd/image.png)
+I added all the features I want this to have which is an esp32 with 3 servo motors and a speaker to make a noise whenever it is going to dispense food. It will use a micro usb to allow me to upload the code.
+  
+
