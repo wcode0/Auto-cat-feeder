@@ -28,3 +28,8 @@ I added all the features I want this to have which is an esp32 with 3 servo moto
 first time doing it so it looks a tad bit messy but it should get the job done. I added holes it is a 2 layer pcb that stays under the 100mm by 100mm limit so overall I think it is good. I have footprints for 0805 package parts that I'm planning to place myself to reduce costs and so I have some experience doing that.![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjEwMCwicHVyIjoiYmxvYl9pZCJ9fQ==--e0fffddf280286c6a884426a7c798c19da42c5a8/image.png)
   
 
+## 10/30/2025 - Learning freecad  
+
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjgxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--2cee5183e4ba315cfb8ecd00b80cd9e5c59b9a7f/image.png)
+I enjoyed watching a 2 hour youtube playlist on how to use freecad and it is still is really complicated I'm hoping to understand soon . I have not gotten anything for the 3d model but instead just learnt freecad  
+
