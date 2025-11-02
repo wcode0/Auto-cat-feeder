@@ -33,3 +33,8 @@ first time doing it so it looks a tad bit messy but it should get the job done. 
 ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjgxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--2cee5183e4ba315cfb8ecd00b80cd9e5c59b9a7f/image.png)
 I enjoyed watching a 2 hour youtube playlist on how to use freecad and it is still is really complicated I'm hoping to understand soon . I have not gotten anything for the 3d model but instead just learnt freecad  
 
+## 11/2/2025 - made the bom.csv  
+
+ First time making a bom.csv. I need to take a break from freecad so i decided to make the bom.csv. in total it is around 41 $.![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NzgxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--b55c5ba2ad3dcec85b181a49c862cc1d4450cf07/image.png) I also spent 20 minutes trying to automate the urls by using the part number and the manufacturer part number when i could have just done it in 5 minutes manually
+  
+
