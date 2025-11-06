@@ -38,3 +38,8 @@ I enjoyed watching a 2 hour youtube playlist on how to use freecad and it is sti
  First time making a bom.csv. I need to take a break from freecad so i decided to make the bom.csv. in total it is around 41 $.![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NzgxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--b55c5ba2ad3dcec85b181a49c862cc1d4450cf07/image.png) I also spent 20 minutes trying to automate the urls by using the part number and the manufacturer part number when i could have just done it in 5 minutes manually
   
 
+## 11/5/2025 - 3d model  
+
+turns out freecad is hard. i went to tinkercad and decided that ill learn freecad another time ![Screenshot from 2025-11-05 19-39-51](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODc2MiwicHVyIjoiYmxvYl9pZCJ9fQ==--c047815ce5f2b35956d42bc1fb1d1bc82ce54518/Screenshot%20from%202025-11-05%2019-39-51.png) the device is almost doen I need a couple more parts to it and i should be good to ship it!
+  
+
