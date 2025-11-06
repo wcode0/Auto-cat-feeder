@@ -40,6 +40,7 @@ I enjoyed watching a 2 hour youtube playlist on how to use freecad and it is sti
 
 ## 11/5/2025 - 3d model  
 
-turns out freecad is hard. i went to tinkercad and decided that ill learn freecad another time ![Screenshot from 2025-11-05 19-39-51](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODc2MiwicHVyIjoiYmxvYl9pZCJ9fQ==--c047815ce5f2b35956d42bc1fb1d1bc82ce54518/Screenshot%20from%202025-11-05%2019-39-51.png) the device is almost doen I need a couple more parts to it and i should be good to ship it!
+turns out freecad is hard. i went to tinkercad and decided that ill learn freecad another time anyway the 3d model is almost done so i should be good to ship![Screenshot from 2025-11-05 19-44-56](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODc2MywicHVyIjoiYmxvYl9pZCJ9fQ==--b1b22a3e31e246c1d53db641351204e7ffc2e3d2/Screenshot%20from%202025-11-05%2019-44-56.png)
+
   
 
