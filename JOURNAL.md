@@ -44,3 +44,8 @@ turns out freecad is hard. i went to tinkercad and decided that ill learn freeca
 
   
 
+## 11/8/2025 - Finished the 3d model!!!  
+
+I added some supports and a system to block a cat from eating the other cats food. The 3d model is all complete from here I will need to write the code then i can ship it![Screenshot from 2025-11-08 17-20-05](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTU5MCwicHVyIjoiYmxvYl9pZCJ9fQ==--7174bd7a47e58cc925597bb58d50147bb3bc9e98/Screenshot%20from%202025-11-08%2017-20-05.png)
+  
+
