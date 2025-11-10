@@ -1,71 +1,3 @@
-<<<<<<< HEAD
-const classifier = knnClassifier.create();
-let net;
-let webcamElement;
-
-async function loadImageAsTensor(url) {
-  const img = new Image();
-  img.crossOrigin = "anonymous";
-  img.src = url;
-
-  await new Promise((resolve) => (img.onload = resolve));
-  return tf.browser.fromPixels(img);
-}
-
-async function addExampleFromFile(imagePath, classId) {
-  const imgTensor = await loadImageAsTensor(imagePath);
-  const activation = net.infer(imgTensor, true);
-  classifier.addExample(activation, classId);
-  imgTensor.dispose();
-}
-
-async function trainFromFolder(folderName, count, classId) {
-  for (let i = 1; i <= count; i++) {
-    const imagePath = `${folderName}/${i}.jpg`;
-    console.log(`Adding ${imagePath}...`);
-    await addExampleFromFile(imagePath, classId);
-  }
-}
-
-async function app() {
-  document.getElementById("console").innerText = "Loading MobileNet...";
-  net = await mobilenet.load();
-  document.getElementById("console").innerText = "Model loaded ✅\nTraining...";
-
-  // 🐱 Train Herrle images (class 0)
-  await trainFromFolder("herrle", 50, 0);
-
-  // 🐈 Train Peaches images (class 1)
-  await trainFromFolder("peaches", 41, 1);
-
-  document.getElementById("console").innerText += "\nTraining complete 🧠";
-
-  // 🎥 Start webcam (rear camera)
-  webcamElement = document.getElementById("webcam");
-  const webcam = await tf.data.webcam(webcamElement, {
-    facingMode: "environment"  // ✅ this tells it to use the rear camera
-  });
-
-  const classes = ["Herrle", "Peaches"];
-
-  // 🔁 Continuous prediction loop
-  while (true) {
-    const img = await webcam.capture();
-    const activation = net.infer(img, "conv_preds");
-    const result = await classifier.predictClass(activation);
-
-    document.getElementById("console").innerText = `
-      Prediction: ${classes[result.label]}
-      Probability: ${result.confidences[result.label].toFixed(2)}
-    `;
-
-    img.dispose();
-    await tf.nextFrame();
-  }
-}
-
-app();
-=======
 var video = document.createElement('video');
 video.setAttribute('playsinline', '');
 video.setAttribute('autoplay', '');
@@ -74,21 +6,56 @@ video.style.width = '200px';
 video.style.height = '200px';
 var canvas= document.createElement('canvas');
 canvas.style.display = 'none';
+canvas.width=200;
+canvas.height=200;
 document.body.appendChild(canvas);
-canvas.style.display = 'none';
+let model, maxPredictions;
+
+async function loadModel() {
+  const modelURL = "model/model.json";
+  const metadataURL = "model/metadata.json";
+  model = await tmImage.load(modelURL, metadataURL);
+  maxPredictions = model.getTotalClasses();
+}
 
 
-var facingMode = "user"; 
+var facingMode = "environment"; 
 var constraints = {
   audio: false,
   video: {
    facingMode: facingMode
   }
 };
-
 /* Stream it to video element */
 navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
   video.srcObject = stream;
 });
-document.body.appendChild(video);   
->>>>>>> a6d3c32 (wrote the ai cat identifier)
+loadModel().then(() => {
+  navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
+    video.srcObject = stream;
+    document.body.appendChild(video);
+
+    video.addEventListener('playing', () => {
+      loop();
+    });
+  });
+});
+
+async function loop() {
+  var ctx = canvas.getContext('2d');
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  if (model) {
+    const prediction = await model.predict(canvas);
+    // Find highest probability result
+    let best = prediction[0];
+    for (let i = 1; i < prediction.length; i++) {
+      if (prediction[i].probability > best.probability) best = prediction[i];
+    }
+    document.getElementById('result').innerText = 
+      `${best.className}: ${(best.probability * 100).toFixed(1)}%`;
+  }
+
+  requestAnimationFrame(loop);
+}
+loop();
