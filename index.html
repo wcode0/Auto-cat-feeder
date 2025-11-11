@@ -12,6 +12,65 @@
   const URL = "./model/";
 
   let model, webcam, labelContainer, maxPredictions;
+  let flashlightActive = false;
+
+  // Check if flashlight should be on based on time (5pm to 7pm)
+  function checkTimeAndSetFlashlight() {
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+    const currentTime = currentHour * 60 + currentMinute; // convert to minutes
+    const fivePmTime = 17 * 60; // 5pm in minutes
+    const sevenPmTime = 19 * 60; // 7pm in minutes
+
+    if (currentTime >= fivePmTime && currentTime < sevenPmTime && !flashlightActive) {
+      enableFlashlight();
+    } else if ((currentTime < fivePmTime || currentTime >= sevenPmTime) && flashlightActive) {
+      disableFlashlight();
+    }
+  }
+
+  function enableFlashlight() {
+    flashlightActive = true;
+    console.log("Flashlight turned ON");
+    activateTorch();
+  }
+
+  function disableFlashlight() {
+    flashlightActive = false;
+    console.log("Flashlight turned OFF");
+    deactivateTorch();
+  }
+
+  async function activateTorch() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "environment" }
+      });
+      const track = stream.getVideoTracks()[0];
+      const capabilities = track.getCapabilities();
+      if (capabilities.torch) {
+        await track.applyConstraints({ torch: true });
+      }
+    } catch (error) {
+      console.log("Torch API not available:", error);
+    }
+  }
+
+  async function deactivateTorch() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "environment" }
+      });
+      const track = stream.getVideoTracks()[0];
+      const capabilities = track.getCapabilities();
+      if (capabilities.torch) {
+        await track.applyConstraints({ torch: false });
+      }
+    } catch (error) {
+      console.log("Torch API not available:", error);
+    }
+  }
 
   // Load the image model and setup the webcam
   async function init() {
@@ -40,6 +99,11 @@
       // and class labels
       labelContainer.appendChild(document.createElement("div"));
     }
+
+    // Check time and set flashlight accordingly
+    checkTimeAndSetFlashlight();
+    // Check time every minute
+    setInterval(checkTimeAndSetFlashlight, 60000);
   }
 
   async function loop() {
